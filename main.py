@@ -447,22 +447,24 @@ tv.heading('time',text ='TIME')
 
 
 ################## INIT DATA ATTENDANCE ####################
-i_main = 0
-ts = time.time()
-date = datetime.datetime.fromtimestamp(ts).strftime('%d-%m-%Y')
 exists = os.path.isfile("Attendance\Attendance_" + date + ".csv")
 if exists:
-    print('hehe')
-else:
-    print('hihi')
-with open("Attendance\Attendance_" + date + ".csv", 'r') as csvFile1:
-    reader1 = csv.reader(csvFile1)
-    for lines in reader1:
-        i_main = i_main + 1
-        if (i_main > 1):
-            iidd = str(lines[0])
-            tv.insert('', 0, text=iidd, values=(str(lines[1]), str(lines[2]), str(lines[3])))
-csvFile1.close()
+    i_main = 0
+    ts = time.time()
+    date = datetime.datetime.fromtimestamp(ts).strftime('%d-%m-%Y')
+    exists = os.path.isfile("Attendance\Attendance_" + date + ".csv")
+    if exists:
+        print('hehe')
+    else:
+        print('hihi')
+    with open("Attendance\Attendance_" + date + ".csv", 'r') as csvFile1:
+        reader1 = csv.reader(csvFile1)
+        for lines in reader1:
+            i_main = i_main + 1
+            if (i_main > 1):
+                iidd = str(lines[0])
+                tv.insert('', 0, text=iidd, values=(str(lines[1]), str(lines[2]), str(lines[3])))
+    csvFile1.close()
 
 ###################### SCROLLBAR ################################
 
