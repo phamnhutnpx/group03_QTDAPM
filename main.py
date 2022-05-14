@@ -146,7 +146,7 @@ def clear2():
 
 def TakeImages():
     check_haarcascadefile()
-    columns = ['SERIAL NO.', '', 'ID', '', 'NAME']
+    columns = ['SERIAL NO.', 'ID', 'NAME']
     assure_path_exists("StudentDetails/")
     assure_path_exists("TrainingImage/")
     serial = 0
@@ -193,7 +193,7 @@ def TakeImages():
         cam.release()
         cv2.destroyAllWindows()
         res = "Images Taken for ID : " + Id
-        row = [serial, '', Id, '', name]
+        row = [serial, Id, name]
         with open('StudentDetails/StudentDetails.csv', 'a+') as csvFile:
             writer = csv.writer(csvFile)
             writer.writerow(row)
@@ -268,7 +268,7 @@ def TrackImages():
 
     cam = cv2.VideoCapture(0)
     font = cv2.FONT_HERSHEY_SIMPLEX
-    col_names = ['Id', '', 'Name', '', 'Date', '', 'Time']
+    col_names = ['Id', 'Name', 'Date', 'Time']
     exists1 = os.path.isfile("StudentDetails/StudentDetails.csv")
     if exists1:
         df = pd.read_csv("StudentDetails/StudentDetails.csv")
@@ -294,7 +294,7 @@ def TrackImages():
                 ID = ID[1:-1]
                 bb = str(aa)
                 bb = bb[2:-2]
-                attendance = [str(ID), '', bb, '', str(date), '', str(timeStamp)]
+                attendance = [str(ID), bb, str(date), str(timeStamp)]
 
             else:
                 Id = 'Unknown'
@@ -322,9 +322,8 @@ def TrackImages():
         for lines in reader1:
             i = i + 1
             if (i > 1):
-                if (i % 2 != 0):
-                    iidd = str(lines[0]) + '   '
-                    tv.insert('', 0, text=iidd, values=(str(lines[2]), str(lines[4]), str(lines[6])))
+                iidd = str(lines[0])
+                tv.insert('', 0, text=iidd, values=(str(lines[1]), str(lines[2]), str(lines[3])))
     csvFile1.close()
     cam.release()
     cv2.destroyAllWindows()
@@ -422,6 +421,7 @@ else:
     res = 0
 message.configure(text='Total Registrations till now  : '+str(res))
 
+
 ##################### MENUBAR #################################
 
 menubar = tk.Menu(window,relief='ridge')
@@ -443,6 +443,25 @@ tv.heading('#0',text ='ID')
 tv.heading('name',text ='NAME')
 tv.heading('date',text ='DATE')
 tv.heading('time',text ='TIME')
+
+
+################## INIT DATA ATTENDANCE ####################
+i_main = 0
+ts = time.time()
+date = datetime.datetime.fromtimestamp(ts).strftime('%d-%m-%Y')
+exists = os.path.isfile("Attendance\Attendance_" + date + ".csv")
+if exists:
+    print('hehe')
+else:
+    print('hihi')
+with open("Attendance\Attendance_" + date + ".csv", 'r') as csvFile1:
+    reader1 = csv.reader(csvFile1)
+    for lines in reader1:
+        i_main = i_main + 1
+        if (i_main > 1):
+            iidd = str(lines[0])
+            tv.insert('', 0, text=iidd, values=(str(lines[1]), str(lines[2]), str(lines[3])))
+csvFile1.close()
 
 ###################### SCROLLBAR ################################
 
