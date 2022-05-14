@@ -159,7 +159,7 @@ def TakeImages():
         serial = (serial // 2)
         csvFile1.close()
     else:
-        with open("StudentDetails/StudentDetails.csv", 'a+') as csvFile1:
+        with open("StudentDetails/StudentDetails.csv", 'a+', newline='') as csvFile1:
             writer = csv.writer(csvFile1)
             writer.writerow(columns)
             serial = 1
@@ -194,7 +194,7 @@ def TakeImages():
         cv2.destroyAllWindows()
         res = "Images Taken for ID : " + Id
         row = [serial, Id, name]
-        with open('StudentDetails/StudentDetails.csv', 'a+') as csvFile:
+        with open('StudentDetails/StudentDetails.csv', 'a+', newline='') as csvFile:
             writer = csv.writer(csvFile)
             writer.writerow(row)
         csvFile.close()
@@ -313,7 +313,7 @@ def TrackImages():
             writer.writerow(attendance)
         csvFile1.close()
     else:
-        with open("Attendance\Attendance_" + date + ".csv", 'a+') as csvFile1:
+        with open("Attendance\Attendance_" + date + ".csv", 'a+', newline='') as csvFile1:
             writer = csv.writer(csvFile1)
             writer.writerow(col_names)
             writer.writerow(attendance)
