@@ -180,7 +180,7 @@ def TakeImages():
                 # incrementing sample number
                 sampleNum = sampleNum + 1
                 # saving the captured face in the dataset folder TrainingImage
-                cv2.imwrite("TrainingImage\ " + name + "." + str(serial) + "." + Id + '.' + str(sampleNum) + ".jpg",
+                cv2.imwrite("TrainingImage\\" + name + "." + str(serial) + "." + Id + '.' + str(sampleNum) + ".jpg",
                             gray[y:y + h, x:x + w])
                 # display the frame
                 cv2.imshow('Taking Images', img)
@@ -366,7 +366,7 @@ frame1.place(relx=0.11, rely=0.17, relwidth=0.39, relheight=0.80)
 frame2 = tk.Frame(window, bg="#c79cff")
 frame2.place(relx=0.51, rely=0.17, relwidth=0.38, relheight=0.80)
 
-message3 = tk.Label(window, text="Face Recognition Based Attendance Monitoring System" ,fg="white",bg="#2d420a" ,width=55 ,height=1,font=('comic', 29, ' bold '))
+message3 = tk.Label(window, text="Student Attendance System by FaceID || Group03" ,fg="white",bg="#2d420a" ,width=55 ,height=1,font=('comic', 29, ' bold '))
 message3.place(x=10, y=10)
 
 frame3 = tk.Frame(window, bg="#c4c6ce")
