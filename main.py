@@ -221,6 +221,7 @@ def TrainImages():
     recognizer.save("TrainingImageLabel\Trainner.yml")
     res = "Profile Saved Successfully"
     message1.configure(text=res)
+    print('hahahahha')
     message.configure(text='Total Registrations till now  : ' + str(ID[0]))
 
 ############################################################################################3
@@ -307,7 +308,7 @@ def TrackImages():
     date = datetime.datetime.fromtimestamp(ts).strftime('%d-%m-%Y')
     exists = os.path.isfile("Attendance\Attendance_" + date + ".csv")
     if exists:
-        with open("Attendance\Attendance_" + date + ".csv", 'a+') as csvFile1:
+        with open("Attendance\Attendance_" + date + ".csv", 'a+', newline='') as csvFile1:
             writer = csv.writer(csvFile1)
             writer.writerow(attendance)
         csvFile1.close()
@@ -415,7 +416,7 @@ if exists:
         reader1 = csv.reader(csvFile1)
         for l in reader1:
             res = res + 1
-    res = (res // 2) - 1
+    res = res - 1
     csvFile1.close()
 else:
     res = 0
