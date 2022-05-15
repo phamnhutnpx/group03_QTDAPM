@@ -156,7 +156,7 @@ def TakeImages():
             reader1 = csv.reader(csvFile1)
             for l in reader1:
                 serial = serial + 1
-        serial = (serial // 2)
+        # serial = (serial // 2)
         csvFile1.close()
     else:
         with open("StudentDetails/StudentDetails.csv", 'a+', newline='') as csvFile1:
